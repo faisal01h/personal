@@ -1,0 +1,9 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"hello_world": "Hello, {name} from en!",
+	"page_title": "Website under construction",
+	"page_description": "I am currently revamping my personal webpage to make it more informative and visually appealing.",
+	"reach_me_intro": "In the meantime, you can reach me on",
+	"reach_me_or": "or",
+	"footer_copyright": "\u00a9 {year} Faisal Hanif. Build {build}. Created with SvelteKit {version}"
+}

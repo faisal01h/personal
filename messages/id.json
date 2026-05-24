@@ -1,0 +1,9 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"hello_world": "Hello, {name} from id!",
+	"page_title": "Website sedang dalam pengembangan",
+	"page_description": "Saat ini saya sedang merombak halaman web pribadi saya untuk membuatnya lebih informatif dan menarik.",
+	"reach_me_intro": "Sementara ini, Anda dapat menghubungi saya melalui",
+	"reach_me_or": "atau",
+	"footer_copyright": "\u00a9 {year} Faisal Hanif. Build {build}. Dibuat dengan SvelteKit {version}"
+}
