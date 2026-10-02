@@ -1,3 +1,301 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans: 'Outfit Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+	--color-paper: #f6f1ea;
+	--color-raised: #fffdfb;
+	--color-ink: #1c1614;
+	--color-muted: #6b605a;
+	--color-line: #e4d9ce;
+	--color-rose: #b4233a;
+	--color-rose-soft: #f8e4e4;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: #f3c7c6;
+		color: var(--color-ink);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-rose);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		border-radius: 999px;
+		border: 1px solid transparent;
+		padding: 0.7rem 1.1rem;
+		font-size: 0.95rem;
+		font-weight: 560;
+		line-height: 1;
+		transition:
+			background-color 160ms ease,
+			color 160ms ease,
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.btn:disabled {
+		cursor: not-allowed;
+		opacity: 0.55;
+	}
+
+	.btn-primary {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+
+	.btn-primary:hover:not(:disabled) {
+		background: var(--color-rose);
+	}
+
+	.btn-rose {
+		background: var(--color-rose);
+		color: white;
+	}
+
+	.btn-rose:hover:not(:disabled) {
+		background: #8e1b2e;
+	}
+
+	.btn-ghost {
+		border-color: var(--color-line);
+		background: transparent;
+		color: var(--color-ink);
+	}
+
+	.btn-ghost:hover:not(:disabled) {
+		border-color: var(--color-ink);
+		background: var(--color-raised);
+	}
+
+	.btn-danger {
+		border-color: #efc4c4;
+		background: white;
+		color: var(--color-rose);
+	}
+
+	.btn-danger:hover:not(:disabled) {
+		background: var(--color-rose);
+		color: white;
+	}
+
+	.field {
+		display: block;
+		width: 100%;
+		border-radius: 0.9rem;
+		border: 1px solid var(--color-line);
+		background: var(--color-raised);
+		padding: 0.8rem 0.95rem;
+		color: var(--color-ink);
+		box-shadow: none;
+	}
+
+	.field:focus {
+		border-color: var(--color-rose);
+		outline: none;
+		box-shadow: 0 0 0 4px rgb(180 35 58 / 12%);
+	}
+
+	.kicker {
+		font-size: 0.78rem;
+		font-weight: 650;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--color-rose);
+	}
+
+	.card {
+		border: 1px solid var(--color-line);
+		background: rgb(255 253 251 / 80%);
+		border-radius: 1.4rem;
+	}
+
+	.tool-btn {
+		display: inline-flex;
+		height: 2.25rem;
+		min-width: 2.25rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.7rem;
+		color: var(--color-ink);
+	}
+
+	.tool-btn:hover {
+		background: var(--color-paper);
+	}
+
+	.tool-btn[aria-pressed='true'] {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+}
+
+.hero-grid {
+	background-image: radial-gradient(rgb(28 22 20 / 16%) 0.7px, transparent 0.7px);
+	background-size: 18px 18px;
+	mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
+}
+
+.reading {
+	font-family: var(--font-serif);
+	font-size: 1.125rem;
+	line-height: 1.75;
+	color: var(--color-ink);
+}
+
+.reading :where(p, li) {
+	margin-top: 0.9rem;
+	margin-bottom: 0.9rem;
+}
+
+.reading :where(blockquote) {
+	position: relative;
+	margin: 2rem 0;
+	padding: 0.2rem 0 0.2rem 1.35rem;
+	border-left: 2px solid var(--color-rose);
+	color: color-mix(in srgb, var(--color-ink) 86%, var(--color-rose));
+	font-size: 1.22rem;
+	font-style: italic;
+	line-height: 1.55;
+}
+
+.reading :where(blockquote p) {
+	margin: 0.4rem 0;
+}
+
+.reading :where(blockquote p:first-child) {
+	margin-top: 0;
+}
+
+.reading :where(blockquote p:last-child) {
+	margin-bottom: 0;
+}
+
+.reading :where(blockquote em) {
+	color: var(--color-muted);
+	font-size: 0.82em;
+	font-style: normal;
+	letter-spacing: 0.01em;
+}
+
+.reading :where(h2, h3, h4) {
+	font-family: var(--font-serif);
+	line-height: 1.2;
+	margin-top: 2rem;
+}
+
+.reading :where(a) {
+	color: var(--color-rose);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+
+.reading :where(img),
+.reading :where(video),
+.ProseMirror video {
+	max-width: 100%;
+	height: auto;
+	border-radius: 1rem;
+}
+
+.reading :where(video),
+.ProseMirror video {
+	display: block;
+	width: 100%;
+	margin: 1.25rem 0;
+	background: #1c1614;
+}
+
+.reading :where(pre) {
+	overflow-x: auto;
+	border-radius: 1rem;
+	background: #241c1a;
+	color: #f6f1ea;
+	padding: 1rem 1.1rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.92rem;
+}
+
+.reading :where(table) {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.editor-surface .ProseMirror {
+	min-height: 18rem;
+	padding: 1rem 1rem 2.5rem;
+	outline: none;
+	font-family: var(--font-serif);
+	font-size: 1.08rem;
+	line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+	.editor-surface .ProseMirror {
+		min-height: 28rem;
+		padding: 1.4rem 1.5rem 3rem;
+	}
+}
+
+.ProseMirror .prosekit-placeholder::before {
+	float: left;
+	height: 0;
+	pointer-events: none;
+	color: #9a8d86;
+	content: attr(data-placeholder);
+}
+
+.ProseMirror img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.8rem;
+}
+
+dialog.sheet {
+	width: min(28rem, calc(100vw - 2rem));
+	border: 0;
+	border-radius: 1.4rem;
+	padding: 0;
+	background: transparent;
+}
+
+dialog.sheet::backdrop {
+	background: rgb(28 22 20 / 48%);
+}

@@ -9,6 +9,12 @@ declare global {
 			session?: Session;
 		}
 
+		interface PageData {
+			user: User | null;
+			metaTitle?: string;
+			metaDescription?: string;
+		}
+
 		// interface Error {}
 		// interface PageData {}
 		// interface PageState {}
