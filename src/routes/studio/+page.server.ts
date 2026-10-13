@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { auth } from '$lib/server/auth';
 import { requireUser } from '$lib/server/guard';
+import { projectStats } from '$lib/server/projects';
 import { deletePost, listManaged, postStats } from '$lib/server/posts';
 import { localizeHref } from '$lib/paraglide/runtime';
 import { m } from '$lib/paraglide/messages.js';
@@ -11,10 +12,15 @@ export const load: PageServerLoad = async (event) => {
 	const status = event.url.searchParams.get('status') ?? 'all';
 	const locale = event.url.searchParams.get('locale') ?? 'all';
 	const q = event.url.searchParams.get('q') ?? '';
-	const [posts, stats] = await Promise.all([listManaged({ q, status, locale }), postStats()]);
+	const [posts, stats, projects] = await Promise.all([
+		listManaged({ q, status, locale }),
+		postStats(),
+		projectStats()
+	]);
 	return {
 		posts,
 		stats,
+		projects,
 		filters: { q, status, locale },
 		metaTitle: m.meta_studio_title(),
 		metaDescription: m.meta_studio_description()

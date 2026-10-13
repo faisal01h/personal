@@ -13,7 +13,6 @@
 	const user = $derived(page.data.user);
 
 	const links = $derived([
-		{ path: '/#about', label: m.nav_about(), id: 'about' },
 		{ path: '/#work', label: m.nav_work(), id: 'work' },
 		{ path: '/blog', label: m.nav_blog(), id: 'blog' },
 		{ path: '/#contact', label: m.nav_contact(), id: 'contact' }

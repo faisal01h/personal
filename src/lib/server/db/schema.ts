@@ -35,6 +35,35 @@ export const post = sqliteTable(
 	(table) => [index('post_status_locale_idx').on(table.status, table.locale)]
 );
 
+export const project = sqliteTable(
+	'project',
+	{
+		id: text('id')
+			.primaryKey()
+			.$defaultFn(() => crypto.randomUUID()),
+		title: text('title').notNull(),
+		summary: text('summary').notNull().default(''),
+		repoUrl: text('repo_url').notNull(),
+		siteUrl: text('site_url').notNull().default(''),
+		owner: text('owner').notNull().default(''),
+		repo: text('repo').notNull().default(''),
+		language: text('language').notNull().default(''),
+		topics: text('topics').notNull().default('[]'),
+		stars: integer('stars').notNull().default(0),
+		sortOrder: integer('sort_order').notNull().default(0),
+		status: text('status', { enum: ['draft', 'published'] })
+			.notNull()
+			.default('draft'),
+		createdAt: integer('created_at', { mode: 'timestamp_ms' })
+			.notNull()
+			.$defaultFn(() => new Date()),
+		updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+			.notNull()
+			.$defaultFn(() => new Date())
+	},
+	(table) => [index('project_status_idx').on(table.status)]
+);
+
 export const visitEvent = sqliteTable(
 	'visit_event',
 	{

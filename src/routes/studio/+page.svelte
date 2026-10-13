@@ -62,6 +62,14 @@
 	</div>
 </div>
 
+<a class="card mt-3 flex items-center justify-between gap-4 p-5" href={href('/studio/projects')}>
+	<div>
+		<p class="text-sm text-muted">{m.studio_projects()}</p>
+		<p class="mt-2 font-serif text-4xl">{data.projects.published}</p>
+	</div>
+	<span class="text-sm font-medium text-rose">{m.studio_project_manage()}</span>
+</a>
+
 <form
 	class="mt-8 flex flex-col gap-3 lg:flex-row lg:items-center"
 	method="GET"

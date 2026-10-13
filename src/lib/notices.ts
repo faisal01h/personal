@@ -14,6 +14,14 @@ export function noticeMessage(code: string) {
 			return m.toast_welcome();
 		case 'signed-out':
 			return m.toast_signed_out();
+		case 'project-saved':
+			return m.toast_project_saved();
+		case 'project-published':
+			return m.toast_project_published();
+		case 'project-hidden':
+			return m.toast_project_hidden();
+		case 'project-deleted':
+			return m.toast_project_deleted();
 		default:
 			return null;
 	}
@@ -29,6 +37,12 @@ export function formErrorMessage(code: string | undefined) {
 			return m.validation_title();
 		case 'content':
 			return m.validation_content();
+		case 'repo':
+			return m.validation_repo();
+		case 'site':
+			return m.validation_site();
+		case 'summary':
+			return m.validation_summary();
 		default:
 			return m.login_error_generic();
 	}

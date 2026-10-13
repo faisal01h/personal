@@ -6,6 +6,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import LocaleSwitch from '$lib/components/site/LocaleSwitch.svelte';
 	import ChartColumn from '@lucide/svelte/icons/chart-column';
+	import FolderGit2 from '@lucide/svelte/icons/folder-git-2';
 	import Library from '@lucide/svelte/icons/library';
 	import Plus from '@lucide/svelte/icons/plus';
 	import LogOut from '@lucide/svelte/icons/log-out';
@@ -49,6 +50,15 @@
 			>
 				<Plus size={16} />
 				{m.studio_new()}
+			</a>
+			<a
+				class="flex items-center gap-2 rounded-xl px-3 py-2 {path.startsWith('/studio/projects')
+					? 'bg-ink text-paper'
+					: 'hover:bg-raised'}"
+				href={href('/studio/projects')}
+			>
+				<FolderGit2 size={16} />
+				{m.studio_projects()}
 			</a>
 			<a
 				class="flex items-center gap-2 rounded-xl px-3 py-2 {path.startsWith('/studio/analytics')

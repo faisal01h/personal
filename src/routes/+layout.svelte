@@ -8,8 +8,11 @@
 	import Toasts from '$lib/components/Toasts.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 	import '@fontsource-variable/outfit';
-	import '@fontsource-variable/fraunces';
-	import '@fontsource-variable/fraunces/standard-italic.css';
+	import '@fontsource-variable/plus-jakarta-sans';
+	import '@fontsource-variable/source-serif-4/opsz.css';
+	import '@fontsource-variable/source-serif-4/opsz-italic.css';
+	import '@fontsource-variable/cormorant';
+	import '@fontsource-variable/cormorant/wght-italic.css';
 	import './layout.css';
 
 	let { children } = $props();
